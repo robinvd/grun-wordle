@@ -1,5 +1,5 @@
 export const WORDS = [
-  "moeke",
+  "mensk",
   "wicht",
   "haile",
   "hoast",
@@ -9,7 +9,7 @@ export const WORDS = [
   "oogen",
   "proat",
   "leven",
-  "mensk",
+  "moeke",
   "kenst",
   "rieks",
   "kloar",
