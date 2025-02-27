@@ -1,4 +1,4 @@
-import { ClockIcon, ShareIcon } from '@heroicons/react/outline'
+import { ClockIcon, ShareIcon, DocumentSearchIcon } from '@heroicons/react/outline'
 import { format } from 'date-fns'
 import Countdown from 'react-countdown'
 
@@ -16,7 +16,7 @@ import {
 } from '../../constants/strings'
 import { GameStats } from '../../lib/localStorage'
 import { shareStatus } from '../../lib/share'
-import { solutionGameDate, tomorrow } from '../../lib/words'
+import { solutionGameDate, tomorrow, solution } from '../../lib/words'
 import { Histogram } from '../stats/Histogram'
 import { MigrationIntro } from '../stats/MigrationIntro'
 import { StatBar } from '../stats/StatBar'
@@ -87,6 +87,23 @@ export const StatsModal = ({
         isGameWon={isGameWon}
         numberOfGuessesMade={numberOfGuessesMade}
       />
+      <div className="mt-5 columns-2 items-center items-stretch justify-center text-center dark:text-white sm:mt-6">
+        <div className="inline-block w-full text-left">
+          <h5>{solution} op Woordwaark</h5>
+        </div>
+        <div>
+          <button
+            type="button"
+            className="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-center text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-base"
+            onClick={() => {
+              window.open("https://woordwaark.nl/woordenboek?query=" + solution + "&languages[]=2&dictionaries[]=4&dictionaries[]=8&exact=false")
+            }}
+          >
+            <DocumentSearchIcon className="mr-2 h-6 w-6 cursor-pointer dark:stroke-white" />
+            Zoeken
+          </button>
+        </div>
+      </div>
       {(isGameLost || isGameWon) && (
         <div className="mt-5 columns-2 items-center items-stretch justify-center text-center dark:text-white sm:mt-6">
           <div className="inline-block w-full text-left">

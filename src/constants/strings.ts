@@ -1,5 +1,5 @@
 export const GAME_TITLE = process.env.REACT_APP_GAME_NAME!
-export const WIN_MESSAGES = ['Goud doan!', 'Fantastisch!', 'Prima!']
+export const WIN_MESSAGES = ['Goud doan!', 'Kon minder', 'Nait verkeerd!']
 export const GAME_COPIED_MESSAGE = 'Spel gekopieerd naar klembord'
 export const NOT_ENOUGH_LETTERS_MESSAGE = 'Niet genoeg letters'
 export const WORD_NOT_FOUND_MESSAGE = 'Woord niet gevonden'
