@@ -91,7 +91,7 @@ export const Keyboard = ({
             isRevealing={isRevealing}
           />
         ))}
-        <Key width={65.4} value="DELETE" onClick={onClick}>
+        <Key width={90.4} value="DELETE" onClick={onClick}>
           {DELETE_TEXT}
         </Key>
       </div>

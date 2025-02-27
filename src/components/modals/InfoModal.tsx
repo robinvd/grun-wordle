@@ -53,19 +53,9 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="T" isCompleted={true} />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        De letter H staat niet in het woord op enige plek.
+        De letter H staat nergens in het woord.
       </p>
 
-      <p className="mt-6 text-sm italic text-gray-500 dark:text-gray-300">
-        Dit is een open source versie van het woordraadspel dat we allemaal kennen en
-        liefhebben -{' '}
-        <a
-          href="https://github.com/cwackerfuss/react-wordle"
-          className="font-bold underline"
-        >
-          bekijk de code hier
-        </a>{' '}
-      </p>
     </BaseModal>
   )
 }
