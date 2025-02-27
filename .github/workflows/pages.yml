@@ -14,8 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Add CNAME file
+      run: 'mkdir build; echo woordle.waistjawel.nl > build/CNAME'
+
     - name: Deploy react app to github pages
       uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
 
-    - name: Add CNAME file
-      run: 'echo woordle.waistjawel.nl > CNAME'
