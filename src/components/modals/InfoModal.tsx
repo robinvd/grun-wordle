@@ -17,43 +17,43 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell
           isRevealing={true}
           isCompleted={true}
-          value="W"
+          value="T"
           status="correct"
         />
-        <Cell value="E" isCompleted={true} />
-        <Cell value="A" isCompleted={true} />
         <Cell value="R" isCompleted={true} />
-        <Cell value="Y" isCompleted={true} />
+        <Cell value="A" isCompleted={true} />
+        <Cell value="I" isCompleted={true} />
+        <Cell value="N" isCompleted={true} />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        De letter W staat in het woord en op de juiste plek.
+        De letter T staat in het woord en op de juiste plek.
       </p>
 
       <div className="mb-1 mt-4 flex justify-center">
         <Cell value="P" isCompleted={true} />
-        <Cell value="I" isCompleted={true} />
+        <Cell value="E" isCompleted={true} />
         <Cell
           isRevealing={true}
           isCompleted={true}
-          value="L"
+          value="E"
           status="present"
         />
-        <Cell value="O" isCompleted={true} />
-        <Cell value="T" isCompleted={true} />
+        <Cell value="R" isCompleted={true} />
+        <Cell value="D" isCompleted={true} />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        De letter L staat in het woord maar op de verkeerde plek.
+        De letter E staat in het woord maar op de verkeerde plek.
       </p>
 
       <div className="mb-1 mt-4 flex justify-center">
-        <Cell value="V" isCompleted={true} />
+        <Cell value="N" isCompleted={true} />
         <Cell value="A" isCompleted={true} />
-        <Cell value="G" isCompleted={true} />
-        <Cell isRevealing={true} isCompleted={true} value="U" status="absent" />
-        <Cell value="E" isCompleted={true} />
+        <Cell value="C" isCompleted={true} />
+        <Cell isRevealing={true} isCompleted={true} value="H" status="absent" />
+        <Cell value="T" isCompleted={true} />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        De letter U staat niet in het woord op enige plek.
+        De letter H staat niet in het woord op enige plek.
       </p>
 
       <p className="mt-6 text-sm italic text-gray-500 dark:text-gray-300">
