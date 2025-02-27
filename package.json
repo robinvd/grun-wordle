@@ -2,7 +2,7 @@
   "name": "game",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://modem7.github.io/react-wordle",
+  "homepage": "https://robinvd.github.io/grun-wordle/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
