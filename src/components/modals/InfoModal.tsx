@@ -8,10 +8,9 @@ type Props = {
 
 export const InfoModal = ({ isOpen, handleClose }: Props) => {
   return (
-    <BaseModal title="How to play" isOpen={isOpen} handleClose={handleClose}>
+    <BaseModal title="Hoe te spelen" isOpen={isOpen} handleClose={handleClose}>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        Guess the word in 6 tries. After each guess, the color of the tiles will
-        change to show how close your guess was to the word.
+        Raad het woord binnen 6 pogingen. Na elke gok verandert de kleur van de tegels om aan te geven hoe dicht je bij het woord was.
       </p>
 
       <div className="mb-1 mt-4 flex justify-center">
@@ -27,7 +26,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="Y" isCompleted={true} />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        The letter W is in the word and in the correct spot.
+        De letter W staat in het woord en op de juiste plek.
       </p>
 
       <div className="mb-1 mt-4 flex justify-center">
@@ -43,7 +42,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="T" isCompleted={true} />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        The letter L is in the word but in the wrong spot.
+        De letter L staat in het woord maar op de verkeerde plek.
       </p>
 
       <div className="mb-1 mt-4 flex justify-center">
@@ -54,17 +53,17 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell value="E" isCompleted={true} />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        The letter U is not in the word in any spot.
+        De letter U staat niet in het woord op enige plek.
       </p>
 
       <p className="mt-6 text-sm italic text-gray-500 dark:text-gray-300">
-        This is an open source version of the word guessing game we all know and
-        love -{' '}
+        Dit is een open source versie van het woordraadspel dat we allemaal kennen en
+        liefhebben -{' '}
         <a
           href="https://github.com/cwackerfuss/react-wordle"
           className="font-bold underline"
         >
-          check out the code here
+          bekijk de code hier
         </a>{' '}
       </p>
     </BaseModal>
