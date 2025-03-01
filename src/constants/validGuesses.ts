@@ -3386,6 +3386,5 @@ export const VALID_GUESSES = [
   "zwoag",
   "zwoan",
   "zwoar",
-  "zwoul",
+  "zwoul"
 ]
-
