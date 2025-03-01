@@ -1,7 +1,7 @@
 export const WORDS = [
   "mensk",
   "wicht",
-  "haile",
+  "heufd",
   "hoast",
   "docht",
   "geern",
@@ -41,7 +41,7 @@ export const WORDS = [
   "wacht",
   "vrauw",
   "pronk",
-  "heufd",
+  "haile",
   "grond",
   "stief",
   "krigt",
