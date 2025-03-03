@@ -3,7 +3,7 @@ export const WORDS = [
   "wicht",
   "heufd",
   "hoast",
-  "docht",
+  "lutje",
   "geern",
   "lutje",
   "oogen",
