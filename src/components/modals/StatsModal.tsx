@@ -1,4 +1,8 @@
-import { ClockIcon, ShareIcon, DocumentSearchIcon } from '@heroicons/react/outline'
+import {
+  ClockIcon,
+  DocumentSearchIcon,
+  ShareIcon,
+} from '@heroicons/react/outline'
 import { format } from 'date-fns'
 import Countdown from 'react-countdown'
 
@@ -96,7 +100,11 @@ export const StatsModal = ({
             type="button"
             className="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-center text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-base"
             onClick={() => {
-              window.open("https://woordwaark.nl/woordenboek?query=" + solution + "&languages[]=2&dictionaries[]=4&dictionaries[]=8&exact=false")
+              window.open(
+                'https://woordwaark.nl/woordenboek?query=' +
+                  solution +
+                  '&languages[]=2&dictionaries[]=4&dictionaries[]=8&exact=false'
+              )
             }}
           >
             <DocumentSearchIcon className="mr-2 h-6 w-6 cursor-pointer dark:stroke-white" />

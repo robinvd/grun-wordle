@@ -11,7 +11,7 @@ import queryString from 'query-string'
 import { ENABLE_ARCHIVED_GAMES } from '../constants/settings'
 import { NOT_CONTAINED_MESSAGE, WRONG_SPOT_MESSAGE } from '../constants/strings'
 import { VALID_GUESSES } from '../constants/validGuesses'
-import { WORDS } from '../constants/wordlist'
+import { HARD_WORDS, WORDS } from '../constants/wordlist'
 import { getToday } from './dateutils'
 import { getGuessStatuses } from './statuses'
 
@@ -123,7 +123,9 @@ export const getWordOfDay = (index: number) => {
     throw new Error('Invalid index')
   }
 
-  return localeAwareUpperCase(WORDS[index % WORDS.length])
+  const words = isHardMode ? HARD_WORDS : WORDS
+
+  return localeAwareUpperCase(words[index % words.length])
 }
 
 export const getSolution = (gameDate: Date) => {
@@ -175,6 +177,10 @@ export const getIsLatestGame = () => {
   const parsed = queryString.parse(window.location.search)
   return parsed === null || !('d' in parsed)
 }
+
+export const isHardMode = localStorage.getItem('gameMode')
+  ? localStorage.getItem('gameMode') === 'hard'
+  : false
 
 export const { solution, solutionGameDate, solutionIndex, tomorrow } =
   getSolution(getGameDate())

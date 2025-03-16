@@ -64,7 +64,11 @@ export const ImmigratePanel = () => {
       if (!migrationStats) return
 
       if (migrationStats.gameState) {
-        saveGameStateToLocalStorage(true, migrationStats.gameState)
+        saveGameStateToLocalStorage(true, false, migrationStats.gameState)
+
+        if (migrationStats.harderGameState) {
+          saveGameStateToLocalStorage(true, true, migrationStats.gameState)
+        }
       }
 
       if (migrationStats.statistics) {

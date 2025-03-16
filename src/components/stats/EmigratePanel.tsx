@@ -11,11 +11,13 @@ export const EmigratePanel = () => {
   const [isCopyButtonEnabled, setIsCopyButtonEnabled] = useState(true)
   const [copyButtonText, setCopyButtonText] = useState('Copy')
   const stats = loadStats()
-  const gameState = loadGameStateFromLocalStorage(true)
+  const gameState = loadGameStateFromLocalStorage(false, true)
+  const harderGameState = loadGameStateFromLocalStorage(true, true)
 
   const migrationStats: MigrationStats = {
     statistics: stats,
     gameState: gameState,
+    harderGameState: harderGameState,
   }
 
   const emigrationCode = encrypt(JSON.stringify(migrationStats))

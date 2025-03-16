@@ -10,7 +10,8 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
   return (
     <BaseModal title="Hoe te spelen" isOpen={isOpen} handleClose={handleClose}>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        Raad het woord binnen 6 pogingen. Na elke gok verandert de kleur van de tegels om aan te geven hoe dicht je bij het woord was.
+        Raad het woord binnen 6 pogingen. Na elke gok verandert de kleur van de
+        tegels om aan te geven hoe dicht je bij het woord was.
       </p>
 
       <div className="mb-1 mt-4 flex justify-center">
@@ -55,7 +56,6 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       <p className="text-sm text-gray-500 dark:text-gray-300">
         De letter H staat nergens in het woord.
       </p>
-
     </BaseModal>
   )
 }

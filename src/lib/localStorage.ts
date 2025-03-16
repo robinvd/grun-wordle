@@ -8,15 +8,25 @@ export type StoredGameState = {
 }
 
 export const saveGameStateToLocalStorage = (
+  isHardMode: boolean,
   isLatestGame: boolean,
   gameState: StoredGameState
 ) => {
-  const key = isLatestGame ? gameStateKey : archiveGameStateKey
+  let key = isLatestGame ? gameStateKey : archiveGameStateKey
+  if (isHardMode) {
+    key += 'Harder'
+  }
   localStorage.setItem(key, JSON.stringify(gameState))
 }
 
-export const loadGameStateFromLocalStorage = (isLatestGame: boolean) => {
-  const key = isLatestGame ? gameStateKey : archiveGameStateKey
+export const loadGameStateFromLocalStorage = (
+  isHardMode: boolean,
+  isLatestGame: boolean
+) => {
+  let key = isLatestGame ? gameStateKey : archiveGameStateKey
+  if (isHardMode) {
+    key += 'Harder'
+  }
   const state = localStorage.getItem(key)
   return state ? (JSON.parse(state) as StoredGameState) : null
 }

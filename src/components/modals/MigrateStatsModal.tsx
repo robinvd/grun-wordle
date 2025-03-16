@@ -13,6 +13,7 @@ type Props = {
 export type MigrationStats = {
   statistics: GameStats
   gameState: StoredGameState | null
+  harderGameState: StoredGameState | null
 }
 
 export const MigrateStatsModal = ({ isOpen, handleClose }: Props) => {

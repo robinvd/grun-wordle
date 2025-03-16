@@ -1,6 +1,6 @@
 import './App.css'
 
-import { ClockIcon } from '@heroicons/react/outline'
+import { ClockIcon, StarIcon } from '@heroicons/react/outline'
 import { format } from 'date-fns'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 import { useEffect, useState } from 'react'
@@ -18,6 +18,7 @@ import { Navbar } from './components/navbar/Navbar'
 import {
   DATE_LOCALE,
   DISCOURAGE_INAPP_BROWSERS,
+  ENABLE_LINGRO_MODE,
   LONG_ALERT_TIME_MS,
   MAX_CHALLENGES,
   REVEAL_TIME_MS,
@@ -27,7 +28,6 @@ import {
   CORRECT_WORD_MESSAGE,
   DISCOURAGE_INAPP_BROWSER_TEXT,
   GAME_COPIED_MESSAGE,
-  HARD_MODE_ALERT_MESSAGE,
   NOT_ENOUGH_LETTERS_MESSAGE,
   SHARE_FAILURE_TEXT,
   WIN_MESSAGES,
@@ -43,9 +43,9 @@ import {
 } from './lib/localStorage'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
 import {
-  findFirstUnusedReveal,
   getGameDate,
   getIsLatestGame,
+  isHardMode,
   isWinningWord,
   isWordInWordList,
   setGameDate,
@@ -82,10 +82,19 @@ function App() {
   const [isHighContrastMode, setIsHighContrastMode] = useState(
     getStoredIsHighContrastMode()
   )
+
+  const handleHardMode = (isHard: boolean) => {
+    localStorage.setItem('gameMode', isHard ? 'hard' : 'normal')
+    window.location.reload()
+  }
+
   const [isRevealing, setIsRevealing] = useState(false)
   const [guesses, setGuesses] = useState<string[]>(() => {
-    const loaded = loadGameStateFromLocalStorage(isLatestGame)
+    const loaded = loadGameStateFromLocalStorage(isHardMode, isLatestGame)
     if (loaded?.solution !== solution) {
+      if (loaded != null && isHardMode) {
+        handleHardMode(false)
+      }
       return []
     }
     const gameWasWon = loaded.guesses.includes(solution)
@@ -103,16 +112,16 @@ function App() {
 
   const [stats, setStats] = useState(() => loadStats())
 
-  const [isHardMode, setIsHardMode] = useState(
-    localStorage.getItem('gameMode')
-      ? localStorage.getItem('gameMode') === 'hard'
+  const [isLingroMode, setIsLingroMode] = useState(
+    ENABLE_LINGRO_MODE && localStorage.getItem('titleTheme')
+      ? localStorage.getItem('titleTheme') === 'lingro'
       : false
   )
 
   useEffect(() => {
     // if no game state on load,
     // show the user the how-to info modal
-    if (!loadGameStateFromLocalStorage(true)) {
+    if (!loadGameStateFromLocalStorage(false, true)) {
       setTimeout(() => {
         setIsInfoModalOpen(true)
       }, WELCOME_INFO_MODAL_MS)
@@ -142,18 +151,14 @@ function App() {
     }
   }, [isDarkMode, isHighContrastMode])
 
+  const handleLingroMode = (isLingro: boolean) => {
+    setIsLingroMode(isLingro)
+    localStorage.setItem('titleTheme', isLingro ? 'lingro' : 'grunnle')
+  }
+
   const handleDarkMode = (isDark: boolean) => {
     setIsDarkMode(isDark)
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
-  }
-
-  const handleHardMode = (isHard: boolean) => {
-    if (guesses.length === 0 || localStorage.getItem('gameMode') === 'hard') {
-      setIsHardMode(isHard)
-      localStorage.setItem('gameMode', isHard ? 'hard' : 'normal')
-    } else {
-      showErrorAlert(HARD_MODE_ALERT_MESSAGE)
-    }
   }
 
   const handleHighContrastMode = (isHighContrast: boolean) => {
@@ -166,7 +171,10 @@ function App() {
   }
 
   useEffect(() => {
-    saveGameStateToLocalStorage(getIsLatestGame(), { guesses, solution })
+    saveGameStateToLocalStorage(isHardMode, getIsLatestGame(), {
+      guesses,
+      solution,
+    })
   }, [guesses])
 
   useEffect(() => {
@@ -223,17 +231,6 @@ function App() {
       })
     }
 
-    // enforce hard mode - all guesses must contain all previously revealed letters
-    if (isHardMode) {
-      const firstMissingReveal = findFirstUnusedReveal(currentGuess, guesses)
-      if (firstMissingReveal) {
-        setCurrentRowClass('jiggle')
-        return showErrorAlert(firstMissingReveal, {
-          onClose: clearCurrentRowClass,
-        })
-      }
-    }
-
     setIsRevealing(true)
     // turn this back off after all
     // chars have been revealed
@@ -275,11 +272,24 @@ function App() {
     <Div100vh>
       <div className="flex h-full flex-col">
         <Navbar
+          version={isLingroMode ? 'lingro' : 'grunnle'}
+          setIsHardMode={
+            isHardMode || (isGameWon && !isRevealing) ? handleHardMode : null
+          }
           setIsInfoModalOpen={setIsInfoModalOpen}
           setIsStatsModalOpen={setIsStatsModalOpen}
           setIsDatePickerModalOpen={setIsDatePickerModalOpen}
           setIsSettingsModalOpen={setIsSettingsModalOpen}
         />
+
+        {isHardMode && (
+          <div className="flex items-center justify-center">
+            <StarIcon className="h-6 w-6 stroke-gray-600 dark:stroke-gray-300" />
+            <p className="text-base text-gray-600 dark:text-gray-300">
+              Bonus stoere grunnle! voor als je het eerste woord hebt geraden!
+            </p>
+          </div>
+        )}
 
         {!isLatestGame && (
           <div className="flex items-center justify-center">
@@ -297,6 +307,7 @@ function App() {
               guesses={guesses}
               currentGuess={currentGuess}
               isRevealing={isRevealing}
+              lingoSounds={isLingroMode}
               currentRowClassName={currentRowClass}
             />
           </div>
@@ -352,10 +363,10 @@ function App() {
           <SettingsModal
             isOpen={isSettingsModalOpen}
             handleClose={() => setIsSettingsModalOpen(false)}
-            isHardMode={isHardMode}
-            handleHardMode={handleHardMode}
             isDarkMode={isDarkMode}
             handleDarkMode={handleDarkMode}
+            isLingroMode={isLingroMode}
+            handleLingroMode={handleLingroMode}
             isHighContrastMode={isHighContrastMode}
             handleHighContrastMode={handleHighContrastMode}
           />
