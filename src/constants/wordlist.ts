@@ -39,6 +39,40 @@ export const WORDS = [
   'stoef',
   'duvel',
   'oomke',
+
+  // spacing for when the words ran out
+  "leger",
+  "pulen",
+  "kaalm",
+  "roulf",
+  "genog",
+  "pioot",
+  "train",
+  "fffft",
+
+  // new
+  "muive",
+  "graas",
+  "bloas",
+  "turen",
+  "glaai",
+  "paail",
+  "gruin",
+  "vloud",
+  "noord",
+  "flonk",
+  "graft",
+  "silon",
+  "roden",
+  "benne",
+  "naren",
+  "zumen",
+  "tusie",
+  "swoul",
+  "tunen",
+  "gaans",
+  "sloaf",
+  "vroag"
 ]
 
 export const HARD_WORDS = [
@@ -79,4 +113,22 @@ export const HARD_WORDS = [
   'snoar',
   'deure',
   'slont',
+  "kaalm",
+  "leger",
+  "tiels",
+  "pioot",
+  "genog",
+  "roulf",
+  "ganze",
+  "golve",
+  "mizze",
+  "bulen",
+  "waarf",
+  "hudde",
+  "klaid",
+  "snouk",
+  "spiek",
+  "bolle",
+  "glaai",
+  "buuls"
 ]
