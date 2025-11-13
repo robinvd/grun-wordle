@@ -119,9 +119,14 @@ export const getIndex = (gameDate: Date) => {
   return index
 }
 
-export const getWordOfDay = (index: number) => {
-  if (index < 0) {
+export const getWordOfDay = (day: number) => {
+  if (day < 0) {
     throw new Error('Invalid index')
+  }
+
+  let index = 0
+  for (var i = 1; i < day + 1; i++) {
+    index += i
   }
 
   const words = isHardMode ? HARD_WORDS : WORDS

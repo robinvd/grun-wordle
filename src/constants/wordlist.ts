@@ -41,14 +41,11 @@ export const WORDS = [
   'oomke',
 
   // spacing for when the words ran out
-  'leger',
   'pulen',
   'kaalm',
-  'roulf',
   'genog',
   'pioot',
   'train',
-  'fffft',
 
   // new
   'muive',
@@ -73,19 +70,6 @@ export const WORDS = [
   'gaans',
   'sloaf',
   'vroag',
-
-  // spacing again
-  'test1',
-  'test2',
-  'test3',
-  'test4',
-  'test5',
-  'test6',
-  'test7',
-  'test8',
-  'test9',
-  'tes10',
-  'tes11',
 
   // rug corpus frequency 100
 
