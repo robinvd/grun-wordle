@@ -103,7 +103,7 @@ export const StatsModal = ({
               window.open(
                 'https://woordwaark.nl/woordenboek?query=' +
                   solution +
-                  '&languages[]=2&dictionaries[]=4&dictionaries[]=8&exact=false'
+                  '&language_ids[]=2&dictionary_ids[]=4&dictionary_ids[]=8&exact=false'
               )
             }}
           >
